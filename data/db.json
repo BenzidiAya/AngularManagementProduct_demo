@@ -1,0 +1,166 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "Printer",
+      "price": 18000,
+      "checked": true
+    },
+    {
+      "id": 3,
+      "name": "Smart Phone",
+      "price": 30000,
+      "checked": false
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 4
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 5
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 6
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 7
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 8
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 9
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 10
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 11
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 12
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 13
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 14
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 15
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 16
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 17
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 18
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 19
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 20
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 21
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 22
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 23
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 24
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 25
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 26
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 27
+    },
+    {
+      "name": "Smart Watch",
+      "price": "800",
+      "checked": false,
+      "id": 28
+    }
+  ]
+}
