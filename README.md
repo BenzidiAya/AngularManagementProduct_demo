@@ -8,7 +8,7 @@
 <p>In the "products" component, users can view a list of available products.</p>
 <img src="captures/listProd.PNG" alt="">
 <br>
-h4>Pagination :</h4>
+<h4>Pagination :</h4>
 <img src="captures/pagination.png" alt="">
 <br>
 <h4>Search Products using "Keyword" :</h4>

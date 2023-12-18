@@ -3,7 +3,7 @@
     {
       "id": 2,
       "name": "Printer",
-      "price": 18000,
+      "price": "99000",
       "checked": true
     },
     {
@@ -11,12 +11,6 @@
       "name": "Smart Phone",
       "price": 30000,
       "checked": false
-    },
-    {
-      "name": "Smart Watch",
-      "price": "800",
-      "checked": false,
-      "id": 4
     },
     {
       "name": "Smart Watch",
@@ -161,6 +155,12 @@
       "price": "800",
       "checked": false,
       "id": 28
+    },
+    {
+      "name": "Smart Tv",
+      "price": "3450",
+      "checked": false,
+      "id": 29
     }
   ]
 }
