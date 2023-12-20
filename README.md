@@ -29,3 +29,5 @@
 <h4>Edit an Existing product :</h4>
 <img src="captures/addP.PNG" alt="">
 <br>
+<h4>Dash-board</h4>
+<img src="captures/DASHBOARD.png">

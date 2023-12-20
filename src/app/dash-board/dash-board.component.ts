@@ -12,7 +12,7 @@ export class DashBoardComponent {
   }
 
   totalCheckedProducts() {
-    return this.appState.productsState.products.filter((p:any)=>p.checked==true).length
+    return this.appState.productsState.products.filter((p:any)=>p.checked==true).length;
   }
 
 }

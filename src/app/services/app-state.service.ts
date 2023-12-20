@@ -8,8 +8,8 @@ export class AppStateService {
     products:[],
     keyword:"",
     currentPage : 1,
-    pageSize:4,
-    totalPages:0,
+    pageSize:3,
+    totalPages:9,
     status :"",
     totalCount : 0,
     errorMessage :""
