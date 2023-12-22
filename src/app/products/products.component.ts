@@ -4,6 +4,7 @@ import {ProductService} from "../services/product.service";
 import {Observable} from "rxjs";
 import {Product} from "../model/product.model";
 import {Router} from "@angular/router";
+import {AppStateService} from "../services/app-state.service";
 
 @Component({
   selector: 'app-products',
@@ -11,67 +12,88 @@ import {Router} from "@angular/router";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit{
-  public products : Array<Product>=[];
-  public keyword : string = "";
-  totalPages:number=0;
-  pageSize=3;
-  currentPage : number=1;
-  constructor(private productService : ProductService,
-              private router : Router) {
+  query :string="";
+  constructor(public productsRepositoryService:ProductService,
+              public appState: AppStateService,
+              private router:Router) {
   }
     ngOnInit() {
-        this.getProducts();
+        this.getProducts({});
     }
 
-    getProducts () {
-     this.productService.getProducts(this.keyword,this.currentPage, this.pageSize)
-        .subscribe({
-          next : (respo) => {
-            this.products=respo.body as Product[];
-            let totalProducts:number=parseInt(respo.headers.get('x-total-count')!);
-            this.totalPages=Math.floor(totalProducts / this.pageSize);
-            if(totalProducts % this.pageSize !=0){
-              this.totalPages=this.totalPages+1;
-            }
-          },
-          error : err => {
-            console.log(err);
-          }
-        })
+  getProducts({
+                keyword=this.appState.productsState.keyword,
+                page=this.appState.productsState.currentPage,
+                size=this.appState.productsState.pageSize}){
+    this.appState.productsState.status="LOADING";
+    setTimeout(()=>{
+      this.productsRepositoryService.getProducts(keyword,page, size).subscribe({
+        next : (resp)=>{
+          let products=resp.body;
+          let totalCount:number=parseInt(resp.headers.get("x-total-count")!);
+          let totalPages=Math.floor(totalCount/this.appState.productsState.pageSize);
+          if(totalCount % this.appState.productsState.pageSize!==0) ++this.appState.productsState.totalPages;
+          this.appState.setProductState({
+            products, totalPages,currentPage:page,
+            totalCount, keyword, status:"LOADED", errorMessage:""
+          })
 
 
-
-      //this.products$=this.productService.getProducts();
-    }
-
-
-  handleCheckProduct(product: Product) {
-    this.productService.checkProduct(product)
-        .subscribe({
-      next : data => {
-        product.checked =! product.checked;
-      }
-    })
+        },
+        error : (err)=>{
+          this.appState.setProductState({status:"ERROR", errorMessage:err.statusText});
+        }
+      });
+    },1000);
+  }
+  goToPage(page: number) {
+    this.getProducts({page:page});
   }
 
-  handleDelete(product: Product) {
-    if (confirm("Etes-vous sûre?"))
-    this.productService.deleteProduct(product)
+
+  handleCheckProduct(product: any) {
+    this.appState.productsState.status="LOADING";
+    this.productsRepositoryService.checkProduct(product)
       .subscribe({
-        next : data => {
-          //this.getProducts()
-          this.products=this.products.filter(p=>p.id!=product.id);
+        next : (data)=>{
+          let prods = this.appState.productsState.products.map((p:any)=>p.id===product.id?data:p);
+          this.appState.setProductState({products:prods,status:"LOADED", errorMessage:""});
+        },
+        error : (err)=>{
+          this.appState.setProductState({status:"ERROR", errorMessage:err.statusText});
+        }
+      })
+
+  }
+
+  handleDeleteProduct(product: any) {
+    this.appState.productsState.status="LOADING";
+    this.productsRepositoryService.deleteProduct(product)
+      .subscribe({
+        next :(data)=>{
+          let products = this.appState.productsState.products.filter((p:any)=>p.id!==product.id);
+          if(products.length==0 ){
+             this.appState.productsState.currentPage;
+            if(this.appState.productsState.currentPage==0){
+              this.appState.productsState.currentPage=1;
+            }
+            this.getProducts({})
+          } else{
+            let totalCount=this.appState.productsState.totalCount-1;
+            this.appState.setProductState({products, totalCount,status:"LOADED", errorMessage:""});
+          }
+        },
+        error : (err)=>{
+          this.appState.setProductState({status:"ERROR", errorMessage:err.statusText});
         }
       })
   }
 
-
-  handleGotoPage(page:number) {
-    this.currentPage=page;
-    this.getProducts()
+  handleSearch() {
+    this.getProducts({keyword:this.query, page :1})
   }
 
-  handleEdit(product: Product) {
+  handleEdit(product: any) {
     this.router.navigateByUrl(`/editProduct/${product.id}`)
   }
 }

@@ -10,7 +10,7 @@
       "id": 3,
       "name": "Smart Phone",
       "price": 30000,
-      "checked": false
+      "checked": true
     },
     {
       "name": "Smart Watch",

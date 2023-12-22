@@ -9,7 +9,7 @@ export class AppStateService {
     keyword:"",
     currentPage : 1,
     pageSize:3,
-    totalPages:9,
+    totalPages :9,
     status :"",
     totalCount : 0,
     errorMessage :""
